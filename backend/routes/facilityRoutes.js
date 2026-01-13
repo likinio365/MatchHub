@@ -10,7 +10,8 @@ const {
     getFacilityById,
     getMyFacility,
     updateFacility,
-    getAllFacilitiesList 
+    getAllFacilitiesList,
+    deleteFacility
 } = require('../controllers/facilityController');
 
 const { protect, authorize } = require('../middleware/authMiddleware');
@@ -57,6 +58,6 @@ router.route('/')
 
 router.route('/:id')
     .get(getFacilityById)
-    .put(protect, authorize('facility_manager', 'field_manager', 'manager', 'admin'), updateFacility);
-
+    .put(protect, authorize('facility_manager', 'field_manager', 'manager', 'admin'), updateFacility)
+    .delete(protect, authorize('admin'), deleteFacility);
 module.exports = router;

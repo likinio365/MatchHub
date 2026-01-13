@@ -73,21 +73,12 @@ app.use(express.urlencoded({ extended: false }));
 cron.schedule('0 * * * *', async () => {
     try {
         const now = new Date();
-        
-  
         const activeBookings = await Booking.find({ status: 'confirmed' });
-
         let updatedCount = 0;
-
         for (const booking of activeBookings) {
-
             if (booking.date && booking.timeSlot) {
-                
-
                 const matchDateTimeString = `${booking.date}T${booking.timeSlot}:00`;
                 const matchDate = new Date(matchDateTimeString);
-
-
                 if (matchDate < now) {
                     booking.status = 'completed';
                     await booking.save();

@@ -146,11 +146,30 @@ const updateFacility = async (req, res) => {
     }
 };
 
+const deleteFacility = async (req, res) => {
+    try {
+        const facility = await Facility.findById(req.params.id);
+        if (!facility) {
+            return res.status(404).json({ message: 'Η εγκατάσταση δεν βρέθηκε' });
+        }
+        if (req.user.role !== 'admin' && facility.owner.toString() !== req.user._id.toString()) {
+            return res.status(401).json({ message: 'Δεν έχετε δικαίωμα διαγραφής' });
+        }
+        await facility.deleteOne();
+        res.json({ message: 'Η εγκατάσταση διαγράφηκε επιτυχώς' });
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+
 module.exports = { 
     getFacilities, 
     getMyFacility, 
     getFacilityById, 
     createFacility, 
     updateFacility, 
-    getAllFacilitiesList 
+    getAllFacilitiesList,
+    deleteFacility 
 };

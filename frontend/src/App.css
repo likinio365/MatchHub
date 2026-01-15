@@ -2,7 +2,7 @@
    1. Default React Styles (Τροποποιημένα)
    ========================================= */
 .App {
-  /* text-align: center;  <-- ΤΟ ΣΧΟΛΙΑΣΑΜΕ: Χαλάει τη στοίχιση σε πολύπλοκα layouts */
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -43,10 +43,10 @@
    2. Custom Design & Responsive Styles
    ========================================= */
 
-/* --- Hero Section --- */
+
 .hero-section {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
-              url('./assets/banner.png'); /* Βεβαιώσου ότι η διαδρομή της εικόνας είναι σωστή */
+              url('./assets/banner.png'); 
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -56,11 +56,11 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  /* Αν έχεις Navbar fixed-top, ίσως χρειαστείς padding-top εδώ */
+ 
   padding-top: 76px; 
 }
 
-/* --- Navbar Styles --- */
+
 .custom-navbar {
   background: rgba(0, 0, 0, 0.85) !important;
   backdrop-filter: blur(10px);
@@ -68,7 +68,7 @@
   z-index: 1030; /* Πάνω από όλα */
 }
 
-/* --- Dropdown Menu --- */
+
 .dropdown-menu {
   background-color: #ffffff !important;
   border: none;
@@ -87,7 +87,7 @@
   transition: all 0.2s;
 }
 
-/* Ενεργοποίηση hover μόνο σε συσκευές που έχουν ποντίκι */
+
 @media (hover: hover) {
   .dropdown-item:hover {
     background-color: #f0f4ff;
@@ -106,12 +106,12 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Stats Strip (Μπάρα Στατιστικών) --- */
+
 .stats-strip {
   background: linear-gradient(135deg, #0d6efd, #0043a8);
   position: relative;
   z-index: 10;
-  margin-top: -3rem !important; /* Desktop: Negative margin για επικάλυψη */
+  margin-top: -3rem !important; 
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -169,12 +169,12 @@
 .leaflet-container {
   width: 100%;
   height: 100%;
-  min-height: 400px; /* Ασφάλεια ύψους */
+  min-height: 400px;
   z-index: 1;
   border-radius: 1rem;
 }
 
-/* --- Animations & Utilities --- */
+
 .fade-in-up {
   animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   opacity: 0;
@@ -198,20 +198,20 @@
 }
 
 /* =========================================
-   3. Responsive Media Queries (Mobile/Tablet)
+   3. Responsive Design
    ========================================= */
 
 /* Tablets & Small Laptops (< 992px) */
 @media (max-width: 991.98px) {
   .hero-section {
-    background-attachment: scroll; /* Αποφυγή προβλημάτων σε touch */
+    background-attachment: scroll; 
     height: auto;
     min-height: 500px;
     padding: 120px 0 80px 0;
   }
   
   .stats-strip {
-    margin-top: 2rem !important; /* Αφαίρεση negative margin */
+    margin-top: 2rem !important; 
   }
 
   .dropdown-menu {

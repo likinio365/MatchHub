@@ -1,5 +1,11 @@
+/* =========================================
+   1. Default React Styles (Τροποποιημένα)
+   ========================================= */
 .App {
-  text-align: center;
+  /* text-align: center;  <-- ΤΟ ΣΧΟΛΙΑΣΑΜΕ: Χαλάει τη στοίχιση σε πολύπλοκα layouts */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -29,10 +35,220 @@
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   2. Custom Design & Responsive Styles
+   ========================================= */
+
+/* --- Hero Section --- */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+              url('./assets/banner.png'); /* Βεβαιώσου ότι η διαδρομή της εικόνας είναι σωστή */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 90vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* Αν έχεις Navbar fixed-top, ίσως χρειαστείς padding-top εδώ */
+  padding-top: 76px; 
+}
+
+/* --- Navbar Styles --- */
+.custom-navbar {
+  background: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1030; /* Πάνω από όλα */
+}
+
+/* --- Dropdown Menu --- */
+.dropdown-menu {
+  background-color: #ffffff !important;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  padding: 10px;
+  margin-top: 15px;
+  animation: fadeInDropdown 0.3s ease;
+}
+
+.dropdown-item {
+  color: #212529 !important;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 0.2s;
+}
+
+/* Ενεργοποίηση hover μόνο σε συσκευές που έχουν ποντίκι */
+@media (hover: hover) {
+  .dropdown-item:hover {
+    background-color: #f0f4ff;
+    color: #0d6efd !important;
+    transform: translateX(5px);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.dropdown-item.text-danger:hover {
+  background-color: #fff5f5;
+  color: #dc3545 !important;
+}
+
+@keyframes fadeInDropdown {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Stats Strip (Μπάρα Στατιστικών) --- */
+.stats-strip {
+  background: linear-gradient(135deg, #0d6efd, #0043a8);
+  position: relative;
+  z-index: 10;
+  margin-top: -3rem !important; /* Desktop: Negative margin για επικάλυψη */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* --- Hover Cards --- */
+.hover-card {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  background: #f8f9fa;
+  height: 100%;
+}
+
+@media (hover: hover) {
+  .hover-card:hover {
+    background: #ffffff;
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.1);
+    border-color: #dee2e6;
   }
+  
+  .hover-card:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+    background-color: #0d6efd !important;
+    color: white !important;
+  }
+}
+
+.hover-card .icon-box {
+  transition: transform 0.3s ease;
+}
+
+/* --- Images & Map --- */
+.hover-scale-img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+@media (hover: hover) {
+  .hover-scale-img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.15) !important;
+  }
+  
+  .hover-scale-img:hover .bg-dark {
+    transform: scale(1.1);
+  }
+}
+
+.hover-scale-img .bg-dark {
+  transition: transform 0.6s ease;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  min-height: 400px; /* Ασφάλεια ύψους */
+  z-index: 1;
+  border-radius: 1rem;
+}
+
+/* --- Animations & Utilities --- */
+.fade-in-up {
+  animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ls-2 { letter-spacing: 2px; }
+.tracking-wider { letter-spacing: 0.1em; }
+.text-white-50 { color: rgba(255, 255, 255, 0.6) !important; }
+
+.line-clamp-2 {
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =========================================
+   3. Responsive Media Queries (Mobile/Tablet)
+   ========================================= */
+
+/* Tablets & Small Laptops (< 992px) */
+@media (max-width: 991.98px) {
+  .hero-section {
+    background-attachment: scroll; /* Αποφυγή προβλημάτων σε touch */
+    height: auto;
+    min-height: 500px;
+    padding: 120px 0 80px 0;
+  }
+  
+  .stats-strip {
+    margin-top: 2rem !important; /* Αφαίρεση negative margin */
+  }
+
+  .dropdown-menu {
+    box-shadow: none !important;
+    background-color: transparent !important;
+    margin-top: 0;
+    padding-left: 20px;
+  }
+  
+  .dropdown-item {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  .dropdown-item:hover {
+    background-color: rgba(255,255,255,0.1);
+    transform: none;
+  }
+}
+
+/* Phones (< 768px) */
+@media (max-width: 767.98px) {
+  .hero-section {
+    min-height: 450px;
+    padding: 100px 0 60px 0;
+  }
+
+  .stats-strip {
+    margin-top: 1.5rem !important;
+  }
+  
+  .hover-card {
+    margin-bottom: 20px;
+  }
+
+  .leaflet-container {
+    min-height: 300px;
+  }
+  
+  h1 { font-size: 2rem; }
 }

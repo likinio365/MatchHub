@@ -314,11 +314,11 @@ const HomePage = () => {
                                 <p className="card-text text-muted small line-clamp-2">{f.description || "Σύγχρονες εγκαταστάσεις..."}</p>
                             </div>
                             
-                            <div className="card-footer bg-white border-0 p-4 pt-0 d-flex justify-content-between align-items-center">
-                                <span className="badge bg-success border px-3 py-2 rounded-pill fs-6">
+                            <div className="card-footer bg-white border-0 p-3 pt-0 d-flex flex-column flex-xl-row justify-content-between align-items-center gap-2">
+                               <span className="badge bg-success border px-3 py-2 rounded-pill fs-6 w-100 w-xl-auto text-center">
                                     {f.pricePerHour ? `${f.pricePerHour}€ / ώρα` : 'Κατόπιν Επικ.'}
                                 </span>
-                                <Link to={isLoggedIn ? `/facilities/${f._id}` : "/login"} className="btn btn-sm btn-primary rounded-pill px-4 fw-bold">Κράτηση</Link>
+                                <Link to={isLoggedIn ? `/facilities/${f._id}` : "/login"} className="btn btn-sm btn-primary rounded-pill px-4 fw-bold w-100 w-xl-auto">Κράτηση</Link>
                             </div>
                         </div>
                     </div>
@@ -331,23 +331,24 @@ const HomePage = () => {
       
       <section className="py-5 bg-dark text-white text-center">
           <div className="container py-4">
-              <h2 className="fw-bold mb-3">Είσαι Ιδιοκτήτης Αθλητικού Κέντρου;</h2>
+              <h2 className="fw-bold mb-3">Είσαι έτοιμος να ξεκινήσεις;</h2>
               <p className="lead text-white-50 mb-4 col-lg-8 mx-auto">
-                  Γίνε μέλος του MatchHub και διαχειρίσου τις κρατήσεις σου εύκολα, γρήγορα και αποτελεσματικά.
+                  Γίνε μέλος του MatchHub και διαχειρίσου τις κρατήσεις σου εύκολα, γρήγορα και αποτελεσματικά. κλείσε ευκολα γήπεδο, βρες παίχτες και απόλαυσε το παιχνίδι!
               </p>
               <Link to="/register?role=facility_manager" className="btn btn-warning btn-lg px-5 rounded-pill fw-bold hover-scale text-dark">
-                  Γίνε Συνεργάτης
+                  Γίνε Μέλος
               </Link>
           </div>
       </section>
       <footer className="bg-black text-white-50 py-5">
         <div className="container text-center">
-            <p className="mb-2">&copy; 2025 MatchHub. Developed by Likollari Ardit.</p>
+            
             <div>
                 <Link to="/contact" className="text-white-50 text-decoration-none mx-2 hover-text-white">Επικοινωνία</Link>
                 |
                 <Link to="/facilities" className="text-white-50 text-decoration-none mx-2 hover-text-white">Γήπεδα</Link>
             </div>
+            <p className="mb-2">&copy; 2025 MatchHub. Developed by Likollari Ardit.</p>
         </div>
       </footer>
     </div>

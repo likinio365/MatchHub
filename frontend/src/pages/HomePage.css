@@ -1,30 +1,37 @@
+/* =========================================
+   1. Βασικό CSS (Desktop First)
+   ========================================= */
+
 .hero-section {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
-              url('../assets/banner.png');
+              url('../assets/banner.png'); /* Βεβαιώσου για τη διαδρομή της εικόνας */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: fixed; /* Parallax εφέ για desktop */
   height: 90vh;
   min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-top: -76px;
-  padding-top: 76px;
+  
+  /* --- ΔΙΟΡΘΩΣΗ ΓΙΑ ΝΑ ΦΑΙΝΕΤΑΙ ΤΟ ΚΕΙΜΕΝΟ --- */
+  margin-top: -76px;    /* Τραβάει το section πίσω από το navbar */
+  padding-top: 150px;   /* ΑΥΞΗΜΕΝΟ: Σπρώχνει το περιεχόμενο κάτω από το navbar */
 }
-
 
 .custom-navbar {
   background: rgba(0, 0, 0, 0.85) !important;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000; 
 }
 
+/* --- Dropdowns --- */
 .dropdown-menu {
   background-color: #ffffff !important;
   border: none;
-  border-radius: 12px; /* Πιο στρογγυλεμένο */
+  border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
   padding: 10px;
   margin-top: 15px;
@@ -39,10 +46,13 @@
   transition: all 0.2s;
 }
 
-.dropdown-item:hover {
-  background-color: #f0f4ff;
-  color: #0d6efd !important;
-  transform: translateX(5px);
+/* Ενεργοποίηση hover ΜΟΝΟ σε υπολογιστές (όχι κινητά) */
+@media (hover: hover) {
+  .dropdown-item:hover {
+    background-color: #f0f4ff;
+    color: #0d6efd !important;
+    transform: translateX(5px);
+  }
 }
 
 .dropdown-item.text-danger:hover {
@@ -55,66 +65,77 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* --- Stats Strip --- */
 .stats-strip {
   background: linear-gradient(135deg, #0d6efd, #0043a8);
   position: relative;
   z-index: 10;
-  margin-top: -3rem !important;
+  margin-top: -3rem !important; /* Επικάλυψη στο Hero για desktop */
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Προσθήκη σκιάς για βάθος */
 }
 
-
+/* --- Hover Cards --- */
 .hover-card {
   transition: all 0.3s ease;
   border: 1px solid transparent;
   background: #f8f9fa;
+  height: 100%;
 }
 
-.hover-card:hover {
-  background: #ffffff;
-  transform: translateY(-10px);
-  box-shadow: 0 1rem 3rem rgba(0,0,0,0.1);
-  border-color: #dee2e6;
+@media (hover: hover) {
+  .hover-card:hover {
+    background: #ffffff;
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.1);
+    border-color: #dee2e6;
+  }
 }
 
 .hover-card .icon-box {
   transition: transform 0.3s ease;
 }
 
-.hover-card:hover .icon-box {
-  transform: scale(1.1) rotate(5deg);
-  background-color: #0d6efd !important;
-  color: white !important;
+@media (hover: hover) {
+  .hover-card:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+    background-color: #0d6efd !important;
+    color: white !important;
+  }
 }
 
-
+/* --- Images & Map --- */
 .hover-scale-img {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  border-radius: 10px; /* Στρογγύλεμα εικόνων */
 }
 
-.hover-scale-img:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 1rem 3rem rgba(0,0,0,0.15) !important;
+@media (hover: hover) {
+  .hover-scale-img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.15) !important;
+  }
+  
+  .hover-scale-img:hover .bg-dark {
+    transform: scale(1.1);
+  }
 }
-
 
 .hover-scale-img .bg-dark {
   transition: transform 0.6s ease;
 }
 
-.hover-scale-img:hover .bg-dark {
-  transform: scale(1.1);
-}
-
-
 .leaflet-container {
   width: 100%;
   height: 100%;
+  min-height: 400px;
   z-index: 1;
   border-radius: 1rem;
 }
 
-
+/* --- Animations & Utilities --- */
 .fade-in-up {
   animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   opacity: 0;
@@ -122,16 +143,12 @@
 }
 
 @keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .ls-2 { letter-spacing: 2px; }
 .tracking-wider { letter-spacing: 0.1em; }
 .text-white-50 { color: rgba(255, 255, 255, 0.6) !important; }
-
 
 .line-clamp-2 {
   display: -webkit-box;
@@ -141,15 +158,64 @@
   overflow: hidden;
 }
 
-/* Responsive Fixes */
-@media (max-width: 991px) {
+/* =========================================
+   2. Responsive Media Queries (Mobile/Tablet)
+   ========================================= */
+
+/* Tablets & Small Laptops (< 992px) */
+@media (max-width: 991.98px) {
   .hero-section {
-    background-attachment: scroll;
+    background-attachment: scroll; /* ΑΠΑΡΑΙΤΗΤΟ: Το fixed background κολλάει σε touch */
     height: auto;
-    padding: 150px 0 100px 0;
+    min-height: 500px;
+    padding: 140px 0 80px 0; /* Padding για να μην κρύβεται το κείμενο */
   }
   
   .stats-strip {
-    margin-top: 2rem !important;
+    margin-top: 2rem !important; /* Αφαίρεση του αρνητικού margin για να μην καλύψει τίποτα */
   }
+
+  /* Προσαρμογή του Dropdown στο Mobile Menu */
+  .dropdown-menu {
+    box-shadow: none !important;
+    background-color: transparent !important;
+    margin-top: 0;
+    padding-left: 20px;
+    border-left: 1px solid rgba(255,255,255,0.1); /* Διαχωριστική γραμμή */
+  }
+  
+  .dropdown-item {
+    color: rgba(255, 255, 255, 0.9) !important; /* Λευκά γράμματα στο dark menu */
+  }
+  
+  .dropdown-item:hover {
+    background-color: rgba(255,255,255,0.1);
+    transform: none;
+  }
+}
+
+/* Κινητά τηλέφωνα (< 768px) */
+@media (max-width: 767.98px) {
+  .hero-section {
+    min-height: 450px;
+    padding: 130px 0 60px 0; /* Αρκετό κενό πάνω */
+    text-align: center; /* Κεντράρισμα κειμένου */
+  }
+
+  .stats-strip {
+    margin-top: 1rem !important;
+    text-align: center;
+  }
+  
+  /* Κενά ανάμεσα στις κάρτες όταν μπαίνουν η μία κάτω από την άλλη */
+  .hover-card {
+    margin-bottom: 20px;
+  }
+
+  .leaflet-container {
+    min-height: 300px;
+  }
+  
+  /* Προσαρμογή μεγέθους γραμματοσειράς τίτλου */
+  h1 { font-size: 2rem; }
 }

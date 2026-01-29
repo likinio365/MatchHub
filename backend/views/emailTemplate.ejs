@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { background-color: #fff; padding: 30px; border-radius: 10px; max-width: 600px; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; color: #2c3e50; }
+        .button { background-color: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 20px; font-weight: bold; }
+        .footer { margin-top: 30px; font-size: 12px; color: #888; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="header">⚽ MatchHub Password Reset</h2>
+        <p>Γεια σου <%= name %>,</p>
+        <p>Λάβαμε ένα αίτημα για επαναφορά του κωδικού πρόσβασης στον λογαριασμό σου.</p>
+        <p>Πάτησε το παρακάτω κουμπί για να δημιουργήσεις νέο κωδικό:</p>
+        <div style="text-align: center;">
+            <a href="<%= url %>" class="button">Επαναφορά Κωδικού</a>
+        </div>
+        <p style="margin-top: 30px;">Αν δεν ζήτησες εσύ την επαναφορά, απλά αγνόησε αυτό το email.</p>
+        <div class="footer">
+            <p>&copy; 2026 MatchHub Team</p>
+        </div>
+    </div>
+</body>
+</html>

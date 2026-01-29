@@ -1,0 +1,144 @@
+
+.login-wrapper {
+
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
+              url('../assets/banner.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+
+.login-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  overflow: hidden;
+  width: 100%;
+  max-width: 450px;
+  transition: transform 0.3s ease;
+  /* Animation εμφάνισης */
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+}
+
+
+.login-header {
+  background: transparent;
+  color: #333;
+  padding: 40px 30px 20px;
+  text-align: center;
+}
+
+.login-header h2, .login-header h3 {
+  color: #4a5568;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.login-header p {
+  color: #718096;
+  font-size: 0.95rem;
+}
+
+
+.card-body {
+  padding: 0 40px 40px;
+}
+
+
+.form-control {
+  background-color: #f7fafc;
+  border: 2px solid #edf2f7;
+  border-radius: 12px;
+  padding: 12px 15px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  color: #2d3748;
+}
+
+.form-control:focus {
+  background-color: #fff;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  margin-left: 4px;
+}
+
+.btn-login {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  
+  width: auto;             
+  min-width: 180px;        
+  padding: 12px 30px;      
+  
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+}
+
+.btn-login:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+  color: white;
+}
+
+.btn-login:active {
+  transform: translateY(0);
+}
+
+
+.auth-links {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.auth-links a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.auth-links a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

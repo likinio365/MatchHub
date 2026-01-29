@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow: /admin-dashboard
+Disallow: /manager-dashboard
+Disallow: /user-dashboard
+Disallow: /api/facilities/my-facility
